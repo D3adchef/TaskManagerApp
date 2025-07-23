@@ -1,33 +1,80 @@
-# Task Manager App
+📝 Task Manager App
+A simple and secure task management application built with React, TypeScript, React Context API, and Auth0 for authentication. Users can create, edit, and delete tasks in a protected environment.
 
-A simple task management application built with React, TypeScript, Context API, and Auth0 authentication. Users can create, edit, and delete tasks in a secure environment.
+🔧 Features
+🔐 Secure login/logout with Auth0
 
-## 🔧 Features
+📋 Create, edit, and delete tasks
 
-- 🔐 Auth0 authentication (login/logout)
-- 📋 Create, edit, and delete tasks
-- 🔎 View task details on a separate page
-- ✅ Mark tasks as complete/incomplete
-- ⚛️ Global state management with React Context API
-- 💅 Styled with Bootstrap
-- 🛡️ Protected routes for authenticated users only
+🔎 View full task details
 
+✅ Mark tasks as complete or incomplete
 
-```bash
-git clone https://github.com/your-username/task-manager-app.git
-cd task-manager-app
+⚛️ Global state management using React Context API
 
+💅 Responsive UI styled with Bootstrap
+
+🛡️ Protected routes for authenticated users only
+
+🚀 Getting Started
+Prerequisites
+Node.js (v18+)
+
+npm or yarn
+
+Auth0 account (free tier)
+
+Installation
+bash
+Copy
+Edit
+git clone https://github.com/D3adchef/TaskManagerApp.git
+cd TaskManagerApp
 npm install
-
 npm run dev
+🔐 Auth0 Setup
+To run this app with your own Auth0 credentials:
+
+Create an Auth0 application at auth0.com.
+
+In main.tsx, replace the following with your credentials:
+
+tsx
+Copy
+Edit
+<Auth0Provider
+  domain="YOUR_DOMAIN"
+  clientId="YOUR_CLIENT_ID"
+  authorizationParams={{
+    redirect_uri: window.location.origin,
+  }}
+>
 🧪 Testing
-Manual testing through the browser
+Manual testing performed through browser:
 
-Auth0 login and task CRUD tested
+✅ Auth0 login/logout verified
 
-Protected routes verified
+✅ Task creation, editing, and deletion
 
-🧑‍💻 Author
+✅ Protected routes confirmed
+
+📁 Project Structure
+graphql
+Copy
+Edit
+src/
+│
+├── components/        # TaskForm, TaskList, Navbar, TaskDetails
+├── context/           # TaskContext with global state
+├── pages/             # Home and Dashboard pages
+├── types/             # Task TypeScript interfaces
+├── App.tsx            # Main routing and layout
+├── main.tsx           # Entry point and provider setup
+├── index.css          # Global styles
+👨‍💻 Author
 Joseph Marquis
-https://github.com/D3adchef • https://d3adchef.github.io/Portfolio/
+
+GitHub: @D3adchef
+
+Portfolio: d3adchef.github.io/Portfolio
 
