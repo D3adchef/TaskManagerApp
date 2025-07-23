@@ -2,6 +2,7 @@
 
 import { useAuth0 } from '@auth0/auth0-react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
@@ -9,7 +10,7 @@ const NavigationBar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="/">Task Manager</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Task Manager</Navbar.Brand>
         <Nav className="ms-auto">
           {isAuthenticated && user && (
             <Navbar.Text className="me-3">

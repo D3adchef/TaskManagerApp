@@ -1,10 +1,12 @@
+// src/App.tsx
 import type { JSX } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import Navbar from './components/Navbar'; // ✅ Keep this import
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import TaskDetails from './components/TaskDetails';
+import { TaskProvider } from './context/TaskContext';
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -13,30 +15,32 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   return isAuthenticated ? children : <Navigate to="/" />;
 };
 
-function App() {
+function App(): JSX.Element {
   return (
-    <>
-      <Navbar /> {/* ✅ Use the correct component name */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/task/:id"
-          element={
-            <ProtectedRoute>
-              <TaskDetails />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </>
+    <Router>
+      <TaskProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/task/:id"
+            element={
+              <ProtectedRoute>
+                <TaskDetails />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </TaskProvider>
+    </Router>
   );
 }
 
